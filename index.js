@@ -1,9 +1,10 @@
 const discord = require("discord.js");
 const fetch = require("node-fetch");
+require(".credentials");
 
 const client = new discord.Client();
 
-const token = "NzQ2MzA2NTg1MDcyMjM4NjEz.Xz-aKw.EGsEwI-_KCtOoKbx9_SnvjxZhuc";
+const { token, apikey } = require("./config.json");
 
 const PREFIX = "!";
 
@@ -22,8 +23,7 @@ client.on("message", (message) => {
           method: "GET",
           headers: {
             "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-            "x-rapidapi-key":
-              "b64b40ef60msh757b7a802615de6p1b944ajsn19945616f559",
+            "x-rapidapi-key": apikey,
           },
         }
       ).then((response) => console.log(response.json()));
